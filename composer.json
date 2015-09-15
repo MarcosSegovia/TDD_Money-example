@@ -1,8 +1,8 @@
 
 {
-    "name": "MarcosSegovia/KataPHP_Pomodoro",
-    "description": "KataPHP_Pomodoro",
-    "keywords": ["kata", "pomodoro"],
+    "name": "MarcosSegovia/TDD_Money-example",
+    "description": "TDD_Money-example",
+    "keywords": ["tdd", "kent-beck", "money"],
     "license": "MIT",
     "authors": [
         {
