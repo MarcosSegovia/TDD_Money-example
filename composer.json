@@ -1,0 +1,22 @@
+
+{
+    "name": "MarcosSegovia/KataPHP_Pomodoro",
+    "description": "KataPHP_Pomodoro",
+    "keywords": ["kata", "pomodoro"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marcos Segovia",
+            "email": "me@marcossegovia.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "phpunit/phpunit": "4.7.*"
+    },
+    "autoload":{
+        "psr-4":{
+            "MarcosSegovia\\":"src/"
+        }
+    }
+}
