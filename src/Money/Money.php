@@ -4,7 +4,7 @@
 namespace MarcosSegovia\Money;
 
 
-class Money
+class Money implements Expression
 {
     protected $amount;
     protected $currency;
@@ -43,5 +43,15 @@ class Money
     public function currency()
     {
         return $this->currency;
+    }
+
+    public function plus(Money $addFactor)
+    {
+        return new Sum($this, $addFactor);
+    }
+
+    public function reduce($to)
+    {
+        return $this;
     }
 }
