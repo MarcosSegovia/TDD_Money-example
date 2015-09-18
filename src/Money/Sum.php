@@ -26,4 +26,14 @@ class Sum implements Expression
         return new Money($amount, $to);
     }
 
+    public function getAugend()
+    {
+        return $this->augend;
+    }
+
+    public function getAddend()
+    {
+        return $this->addend;
+    }
+
 }

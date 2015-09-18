@@ -57,6 +57,14 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(Money::dollar(10), $reduced);
     }
 
+    public function testPlusReturnSum()
+    {
+        $five = Money::dollar(5);
+        $result = $five->plus($five);
+        $this->assertEquals($five, $result->getAugend());
+        $this->assertEquals($five, $result->getAugend());
+    }
+
     public function testReduceSum()
     {
         $sum = new Sum(Money::dollar(3), Money::dollar(4));
