@@ -3,29 +3,19 @@
 namespace MarcosSegovia\MoneyTest;
 
 use MarcosSegovia\Money\Money;
+use MarcosSegovia\Money\Franc;
+use MarcosSegovia\Money\Dollar;
+
 
 
 class MoneyTest extends \PHPUnit_Framework_TestCase
 {
-    public function testDollarMultiplication()
-    {
-        $five = Money::dollar(5);
-        $this->assertEquals(Money::dollar(10), $five->multiply(2));
-        $this->assertEquals(Money::dollar(15), $five->multiply(3));
-    }
 
     public function testDollarEquality()
     {
         $five = Money::dollar(5);
         $this->assertTrue($five->equals(Money::dollar(5)));
         $this->assertFalse($five->equals(Money::dollar(6)));
-    }
-
-    public function testFrancMultiplication()
-    {
-        $five = Money::franc(5);
-        $this->assertEquals(Money::franc(10), $five->multiply(2));
-        $this->assertEquals(Money::franc(15), $five->multiply(3));
     }
 
     public function testFrancEquality()
@@ -41,8 +31,6 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($fiveDollar->equals(Money::dollar(5)));
         $this->assertFalse($fiveDollar->equals(Money::dollar(6)));
         $fiveFranc = Money::franc(5);
-        $this->assertTrue($fiveFranc->equals(Money::franc(5)));
-        $this->assertFalse($fiveFranc->equals(Money::franc(6)));
 
         $this->assertFalse($fiveFranc->equals(Money::dollar(5)));
     }
@@ -52,5 +40,11 @@ class MoneyTest extends \PHPUnit_Framework_TestCase
         $fiveDollar = Money::dollar(5);
         $this->assertEquals(Money::dollar(10), $fiveDollar->multiply(2));
         $this->assertEquals(Money::dollar(15), $fiveDollar->multiply(3));
+    }
+
+    public function testCurrency()
+    {
+        $this->assertEquals("USD", Money::dollar(1)->currency());
+        $this->assertEquals("CHF", Money::franc(1)->currency());
     }
 }

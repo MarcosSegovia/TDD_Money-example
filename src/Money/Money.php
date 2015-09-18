@@ -4,13 +4,20 @@
 namespace MarcosSegovia\Money;
 
 
-abstract class Money
+class Money
 {
     protected $amount;
+    protected $currency;
+
+    public function __construct($amount, $currency)
+    {
+        $this->amount = $amount;
+        $this->currency = $currency;
+    }
 
     public function equals(Money $money)
     {
-        return $this->getAmount() == $money->getAmount() && get_class($this) == get_class($money);
+        return $this->getAmount() == $money->getAmount() && strcmp($this->currency(), $money->currency()) == 0 ;
     }
 
     public function getAmount()
@@ -20,13 +27,21 @@ abstract class Money
 
     static function dollar($amount)
     {
-        return new Dollar($amount);
+        return new Money($amount, 'USD');
     }
 
     static function franc($amount)
     {
-        return new Franc($amount);
+        return new Money($amount, 'CHF');
     }
 
-    abstract function multiply($factor);
+    public function multiply($factor)
+    {
+        return new Money($this->amount * $factor, $this->currency());
+    }
+
+    public function currency()
+    {
+        return $this->currency;
+    }
 }
