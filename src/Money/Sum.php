@@ -20,7 +20,7 @@ class Sum implements Expression
 
     }
 
-    public function reduce($to)
+    public function reduce(Bank $bank, $to)
     {
         $amount = $this->augend->getAmount() + $this->addend->getAmount();
         return new Money($amount, $to);

@@ -17,7 +17,7 @@ class Money implements Expression
 
     public function equals(Money $money)
     {
-        return $this->getAmount() == $money->getAmount() && strcmp($this->currency(), $money->currency()) == 0 ;
+        return $this->getAmount() == $money->getAmount() && strcmp($this->currency(), $money->currency()) == 0;
     }
 
     public function getAmount()
@@ -50,8 +50,9 @@ class Money implements Expression
         return new Sum($this, $addFactor);
     }
 
-    public function reduce($to)
+    public function reduce(Bank $bank, $to)
     {
-        return $this;
+        $rate = $bank->rate($this->currency(), $to);
+        return new Money($this->amount / $rate, $to);
     }
 }
