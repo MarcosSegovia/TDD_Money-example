@@ -35,17 +35,17 @@ class Money implements Expression
         return new Money($amount, 'CHF');
     }
 
-    public function multiply($factor)
-    {
-        return new Money($this->amount * $factor, $this->currency());
-    }
-
     public function currency()
     {
         return $this->currency;
     }
 
-    public function plus(Money $addFactor)
+    public function multiply($factor)
+    {
+        return new Money($this->amount * $factor, $this->currency());
+    }
+
+    public function plus(Expression $addFactor)
     {
         return new Sum($this, $addFactor);
     }
